@@ -27,8 +27,8 @@ def take_screenshot(url: str, filename: str):
     driver.get(url)
     time.sleep(5)  # Tunggu sebentar agar halaman sepenuhnya dimuat
 
-    # Atur zoom level ke 80%
-    driver.execute_script("document.body.style.zoom='80%'")
+    # Atur zoom level ke 100%
+    driver.execute_script("document.body.style.zoom='100%'")
     
     time.sleep(5)  # Tunggu sebentar setelah mengatur zoom
 
