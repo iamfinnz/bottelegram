@@ -4,8 +4,7 @@ from telegram.ext import ApplicationBuilder, CommandHandler, ContextTypes
 from selenium import webdriver
 from selenium.webdriver.chrome.service import Service
 from selenium.webdriver.chrome.options import Options
-from selenium.webdriver.common.by import By
-from webdriver_manager.chrome import ChromeDriverManager
+import chromedriver_autoinstaller
 import time
 import os
 
@@ -14,10 +13,12 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
 
 # Fungsi untuk mengambil screenshot dari elemen tertentu
 def take_screenshot(url: str, filename: str):
+    # Automatically install the correct version of ChromeDriver
+    chromedriver_autoinstaller.install()
+
     options = Options()
     options.headless = True  # Menjalankan browser di background
-    service = Service(ChromeDriverManager().install())
-    driver = webdriver.Chrome(service=service, options=options)
+    driver = webdriver.Chrome(options=options)
     
     # Atur ukuran jendela browser ke 2K
     driver.set_window_size(2560, 1440)  # Ganti dengan resolusi yang diinginkan
